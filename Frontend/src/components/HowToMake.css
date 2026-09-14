@@ -1,0 +1,156 @@
+.how-to-section {
+  padding: 100px 7%;
+  background: var(--cream);
+}
+
+.how-to-heading {
+  max-width: 650px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.how-to-heading .section-label {
+  color: var(--ginger);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.how-to-heading h2 {
+  color: var(--deep-green);
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.how-to-heading h2 span {
+  color: var(--ginger);
+}
+
+.how-to-heading > p:last-child {
+  color: var(--ginger-brown);
+  line-height: 1.7;
+}
+
+.video-grid {
+  max-width: 1200px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.video-card {
+  overflow: hidden;
+
+  background: white;
+
+  border-radius: 20px;
+
+  box-shadow: 0 12px 35px rgba(122, 69, 37, 0.08);
+
+  border: 1px solid rgba(122, 69, 37, 0.1);
+}
+
+.video-wrapper {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  background: var(--deep-green);
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+.video-icon {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(200, 117, 50, 0.9);
+
+  color: white;
+
+  pointer-events: none;
+
+  opacity: 0.9;
+}
+
+.video-info {
+  padding: 22px;
+}
+
+.video-info h3 {
+  color: var(--deep-green);
+
+  font-size: 1.3rem;
+
+  margin-bottom: 10px;
+}
+
+.video-info p {
+  color: var(--ginger-brown);
+
+  line-height: 1.6;
+
+  margin-bottom: 18px;
+}
+
+.watch-btn {
+  border: none;
+
+  padding: 11px 18px;
+
+  border-radius: 10px;
+
+  background: var(--deep-green);
+
+  color: white;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.watch-btn:hover {
+  background: var(--ginger);
+}
+
+.watch-btn i {
+  margin-right: 8px;
+}
+
+@media (max-width: 700px) {
+  .how-to-section {
+    padding: 70px 5%;
+  }
+
+  .how-to-heading h2 {
+    font-size: 2.3rem;
+  }
+
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}

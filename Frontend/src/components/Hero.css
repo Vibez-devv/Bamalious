@@ -1,0 +1,129 @@
+.hero {
+  min-height: 650px;
+  padding: 80px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  background:
+    radial-gradient(circle at 80% 50%, rgba(200, 117, 50, 0.18), transparent 35%),
+    var(--cream);
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero-small {
+  color: var(--ginger);
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: 4.5rem;
+  line-height: 1.05;
+  color: var(--deep-green);
+  margin-bottom: 25px;
+}
+
+.hero h1 span {
+  color: var(--ginger);
+}
+
+.hero-text {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: var(--ginger-brown);
+  margin-bottom: 35px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.primary-btn,
+.secondary-btn {
+  padding: 14px 24px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.primary-btn {
+  background: var(--deep-green);
+  color: white;
+}
+
+.primary-btn:hover {
+  background: var(--fresh-green);
+  transform: translateY(-3px);
+}
+
+.secondary-btn {
+  border: 2px solid var(--ginger);
+  color: var(--ginger);
+}
+
+.secondary-btn:hover {
+  background: var(--ginger);
+  color: white;
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.drink-circle {
+  width: 330px;
+  height: 330px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    var(--ginger),
+    var(--warm-ginger)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 9rem;
+  box-shadow: 0 25px 60px rgba(122, 69, 37, 0.25);
+}
+
+/* Mobile */
+
+@media (max-width: 800px) {
+  .navbar {
+    padding: 0 5%;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 60px 5%;
+  }
+
+  .hero h1 {
+    font-size: 3.2rem;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .drink-circle {
+    width: 250px;
+    height: 250px;
+    font-size: 6rem;
+  }
+}

@@ -1,0 +1,43 @@
+:root {
+  --deep-green: #124d22;
+  --fresh-green: #1d6b2f;
+  --ginger: #c87532;
+  --warm-ginger: #e39a55;
+  --gold: #d99a16;
+  --cream: #fffaf0;
+  --ginger-brown: #7a4525;
+  --deep-red: #8f1825;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--cream);
+  color: var(--ginger-brown);
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--cream);
+}
+
+.app h1 {
+  color: var(--deep-green);
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.app p {
+  color: var(--ginger);
+  font-size: 1.2rem;
+}
