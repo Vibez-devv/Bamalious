@@ -1,6 +1,6 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
-import "./Checkout.css";
+import "./checkout.css";
 
 function Checkout({ order, onOrderComplete }) {
   const [formData, setFormData] = useState({
@@ -16,29 +16,26 @@ function Checkout({ order, onOrderComplete }) {
 
   const [sending, setSending] = useState(false);
 
-  // ==============================
-  // EMAILJS DETAILS
-  // ==============================
 
   const serviceID = "service_qwndiqh";
   const templateID = "template_yl7dbnp";
   const publicKey = "DKhfwnSwCiY2ja0Va";
 
-  // ==============================
-  // WHATSAPP NUMBER
-  // ==============================
+  
+  // BAMALICIOUS WHATSAPP
+  
 
   const whatsappNumber = "2348131574678";
 
   // ==============================
-  // HANDLE FORM INPUTS
+  // HANDLE INPUT
   // ==============================
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
+    setFormData((previous) => ({
+      ...previous,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
   // ==============================
@@ -61,15 +58,16 @@ Quantity: ${item.quantity}`
   };
 
   // ==============================
-  // SUBMIT ORDER
+  // SEND ORDER
   // ==============================
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Make sure there is an order
     if (!order || order.length === 0) {
-      alert("Please add at least one drink to your order.");
+      alert(
+        "Please add at least one drink to your order."
+      );
       return;
     }
 
@@ -91,7 +89,6 @@ Quantity: ${item.quantity}`
       formData.phone
     );
 
-    // Save order details too
     localStorage.setItem(
       "customerOrderDetails",
       orderDetails
@@ -128,7 +125,7 @@ Quantity: ${item.quantity}`
 
     try {
       // ==============================
-      // SEND ORDER TO EMAIL
+      // SEND EMAIL
       // ==============================
 
       await emailjs.send(
@@ -143,7 +140,7 @@ Quantity: ${item.quantity}`
       );
 
       // ==============================
-      // WHATSAPP MESSAGE
+      // CREATE WHATSAPP MESSAGE
       // ==============================
 
       const whatsappMessage = `
@@ -155,17 +152,25 @@ Phone: ${formData.phone}
 
 *ORDER INFORMATION*
 Event Type: ${
-        formData.eventType || "Not specified"
+        formData.eventType ||
+        "Not specified"
       }
+
 Event Date: ${
-        formData.eventDate || "Not specified"
+        formData.eventDate ||
+        "Not specified"
       }
+
 Delivery Date: ${
-        formData.deliveryDate || "Not specified"
+        formData.deliveryDate ||
+        "Not specified"
       }
+
 Delivery Time: ${
-        formData.deliveryTime || "Not specified"
+        formData.deliveryTime ||
+        "Not specified"
       }
+
 Location: ${formData.location}
 
 *ORDER DETAILS*
@@ -181,24 +186,27 @@ ${
 Price will be discussed and confirmed on WhatsApp.
 `;
 
+      // ==============================
+      // OPEN WHATSAPP
+      // ==============================
+
       const whatsappURL =
         `https://wa.me/${whatsappNumber}` +
         `?text=${encodeURIComponent(
           whatsappMessage
         )}`;
 
-      // Open WhatsApp
       window.open(
         whatsappURL,
         "_blank"
       );
 
       // ==============================
-      // SUCCESS MESSAGE
+      // SUCCESS
       // ==============================
 
       alert(
-        "Your order has been sent successfully. We will contact you on WhatsApp to confirm the details and price."
+        "Your order has been prepared successfully. WhatsApp will open with your order message. Please tap Send to complete the WhatsApp order."
       );
 
       // ==============================
@@ -216,9 +224,7 @@ Price will be discussed and confirmed on WhatsApp.
         message: "",
       });
 
-      // Clear the cart/order
       onOrderComplete();
-
     } catch (error) {
       console.error(
         "Order email failed:",
@@ -238,7 +244,6 @@ Price will be discussed and confirmed on WhatsApp.
       alert(
         "We could not send your order. Please try again."
       );
-
     } finally {
       setSending(false);
     }
@@ -250,7 +255,6 @@ Price will be discussed and confirmed on WhatsApp.
       id="checkout"
     >
       <div className="checkout-heading">
-
         <p className="section-label">
           PLACE YOUR ORDER
         </p>
@@ -261,22 +265,16 @@ Price will be discussed and confirmed on WhatsApp.
         </h2>
 
         <p>
-          Fill in your details and we'll contact
-          you on WhatsApp to confirm your order
-          and price.
+          Fill in your details and we'll prepare
+          your order for WhatsApp confirmation.
         </p>
-
       </div>
 
       <form
         className="checkout-form"
         onSubmit={handleSubmit}
       >
-
-        {/* FULL NAME */}
-
         <div className="form-group">
-
           <label htmlFor="name">
             Full Name
           </label>
@@ -290,13 +288,9 @@ Price will be discussed and confirmed on WhatsApp.
             placeholder="Enter your full name"
             required
           />
-
         </div>
 
-        {/* PHONE */}
-
         <div className="form-group">
-
           <label htmlFor="phone">
             WhatsApp Phone Number
           </label>
@@ -310,13 +304,9 @@ Price will be discussed and confirmed on WhatsApp.
             placeholder="e.g. 08012345678"
             required
           />
-
         </div>
 
-        {/* EVENT TYPE */}
-
         <div className="form-group">
-
           <label htmlFor="eventType">
             Event Type
           </label>
@@ -327,7 +317,6 @@ Price will be discussed and confirmed on WhatsApp.
             value={formData.eventType}
             onChange={handleChange}
           >
-
             <option value="">
               Select event type
             </option>
@@ -359,15 +348,10 @@ Price will be discussed and confirmed on WhatsApp.
             <option value="Other">
               Other
             </option>
-
           </select>
-
         </div>
 
-        {/* EVENT DATE */}
-
         <div className="form-group">
-
           <label htmlFor="eventDate">
             Event Date
           </label>
@@ -379,13 +363,9 @@ Price will be discussed and confirmed on WhatsApp.
             value={formData.eventDate}
             onChange={handleChange}
           />
-
         </div>
 
-        {/* DELIVERY DATE */}
-
         <div className="form-group">
-
           <label htmlFor="deliveryDate">
             Delivery Date
           </label>
@@ -398,13 +378,9 @@ Price will be discussed and confirmed on WhatsApp.
             onChange={handleChange}
             required
           />
-
         </div>
 
-        {/* DELIVERY TIME */}
-
         <div className="form-group">
-
           <label htmlFor="deliveryTime">
             Preferred Delivery Time
           </label>
@@ -417,13 +393,9 @@ Price will be discussed and confirmed on WhatsApp.
             onChange={handleChange}
             required
           />
-
         </div>
 
-        {/* DELIVERY LOCATION */}
-
         <div className="form-group full-width">
-
           <label htmlFor="location">
             Delivery Location
           </label>
@@ -437,13 +409,9 @@ Price will be discussed and confirmed on WhatsApp.
             placeholder="Enter delivery address"
             required
           />
-
         </div>
 
-        {/* ADDITIONAL MESSAGE */}
-
         <div className="form-group full-width">
-
           <label htmlFor="message">
             Additional Message
           </label>
@@ -456,54 +424,42 @@ Price will be discussed and confirmed on WhatsApp.
             placeholder="Tell us anything else we should know..."
             rows="5"
           ></textarea>
-
         </div>
 
-        {/* PRICE NOTICE */}
-
         <div className="price-notice full-width">
-
           <i className="fa-brands fa-whatsapp"></i>
 
           <div>
-
             <strong>
-              Price is discussed on WhatsApp
+              Order through WhatsApp
             </strong>
 
             <p>
-              We don't display prices on the
-              website. After receiving your
-              order, we'll contact you on
-              WhatsApp to confirm the price.
+              Your order details will be prepared
+              in WhatsApp. Tap Send in WhatsApp
+              to send the order to Bamalicious Kitchen.
+              Price will be discussed there.
             </p>
-
           </div>
-
         </div>
-
-        {/* SUBMIT BUTTON */}
 
         <button
           type="submit"
           className="checkout-submit"
           disabled={sending}
         >
-
           {sending ? (
             <>
               <i className="fa-solid fa-spinner fa-spin"></i>
-              Sending Order...
+              Preparing Order...
             </>
           ) : (
             <>
-              <i className="fa-solid fa-paper-plane"></i>
-              Send Order
+              <i className="fa-brands fa-whatsapp"></i>
+              Order on WhatsApp
             </>
           )}
-
         </button>
-
       </form>
     </section>
   );
