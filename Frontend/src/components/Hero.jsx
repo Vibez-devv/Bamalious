@@ -1,34 +1,43 @@
 import "./Hero.css";
+import gdrink from "../asset/images/g drink.jpeg";
 
 function Hero() {
   return (
     <section className="hero" id="home">
       <div className="hero-content">
-        <p className="hero-small"> NATURAL • FRESH • HOMEMADE</p>
+        <p className="hero-label">
+          NATURAL • FRESH • NIGERIAN
+        </p>
 
         <h1>
-          Taste The <span>Goodness</span>
+          Taste The
+          <span> Goodness</span>
         </h1>
 
-        <p className="hero-text">
-          Refreshing Nigerian drinks made with natural ingredients,
-          traditional recipes and a touch of love.
+        <p className="hero-description">
+          Refreshing natural drinks made with
+          carefully selected ingredients and
+          traditional Nigerian flavours.
         </p>
 
         <div className="hero-buttons">
-          <a href="#drinks" className="primary-btn">
+          <a href="#drinks" className="hero-primary-btn">
             Explore Our Drinks
+            <i className="fa-solid fa-arrow-right"></i>
           </a>
 
-          <a href="#how-to" className="secondary-btn">
-             Learn How To Make
+          <a href="#how-to-make" className="hero-secondary-btn">
+            How We Make It
           </a>
         </div>
       </div>
 
       <div className="hero-image">
-        <div className="drink-circle">
-          🥤
+        <div className="hero-image-circle">
+          <img
+            src={gdrink}
+            alt="Bamalicious Natural Drink"
+          />
         </div>
       </div>
     </section>

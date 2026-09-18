@@ -1,14 +1,14 @@
-/* =========================================
-   DRINK DETAILS MODAL
-========================================= */
+/* ==============================
+   DRINK MODAL
+============================== */
 
 .drink-modal {
   position: fixed;
   inset: 0;
+  z-index: 9999;
 
-  z-index: 2500;
-
-  background: rgba(18, 77, 34, 0.7);
+  width: 100%;
+  height: 100%;
 
   display: flex;
   align-items: center;
@@ -16,13 +16,15 @@
 
   padding: 20px;
 
+  background: rgba(0, 0, 0, 0.75);
+
   overflow-y: auto;
 }
 
 
-/* =========================================
-   MODAL CONTENT
-========================================= */
+/* ==============================
+   MODAL BOX
+============================== */
 
 .drink-modal-content {
   position: relative;
@@ -30,76 +32,61 @@
   width: 100%;
   max-width: 900px;
 
-  max-height: 90vh;
-
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 45% 55%;
 
-  background: var(--cream);
+  margin: auto;
+
+  background: #fffaf0;
 
   border-radius: 24px;
 
   overflow: hidden;
 
-  box-shadow:
-    0 25px 70px
-    rgba(0, 0, 0, 0.25);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
 }
 
 
-/* =========================================
+/* ==============================
    CLOSE BUTTON
-========================================= */
+============================== */
 
 .drink-modal-close {
   position: absolute;
-
   top: 15px;
   right: 15px;
 
-  z-index: 10;
+  z-index: 50;
 
   width: 42px;
   height: 42px;
 
-  border: none;
-
-  border-radius: 50%;
-
-  background: white;
-
-  color: var(--deep-green);
-
-  font-size: 1rem;
-
-  cursor: pointer;
-
-  display: flex;
+  display: flex !important;
   align-items: center;
   justify-content: center;
 
-  transition: 0.3s;
+  border: none;
+  border-radius: 50%;
+
+  background: #124d22 !important;
+
+  color: #ffffff !important;
+
+  font-size: 18px;
+
+  cursor: pointer;
 }
 
-.drink-modal-close:hover {
-  background: var(--ginger);
 
-  color: white;
-
-  transform: rotate(90deg);
-}
-
-
-/* =========================================
-   DRINK IMAGE
-========================================= */
+/* ==============================
+   IMAGE
+============================== */
 
 .drink-details-image {
-  min-height: 500px;
+  width: 100%;
+  min-height: 560px;
 
-  height: 100%;
-
-  overflow: hidden;
+  background: #eeeeee;
 }
 
 .drink-details-image img {
@@ -112,376 +99,355 @@
 }
 
 
-/* =========================================
-   DRINK INFORMATION
-========================================= */
+/* ==============================
+   DETAILS
+============================== */
 
 .drink-details-info {
-  padding: 40px 35px;
+  min-width: 0;
+
+  max-height: 85vh;
+
+  padding: 45px 40px;
 
   overflow-y: auto;
+}
 
-  max-height: 90vh;
+.drink-details-info::-webkit-scrollbar {
+  width: 6px;
+}
+
+.drink-details-info::-webkit-scrollbar-thumb {
+  background: #c87532;
+  border-radius: 10px;
 }
 
 
-/* =========================================
+/* ==============================
    LABEL
-========================================= */
+============================== */
 
 .drink-details-label {
-  color: var(--ginger);
+  margin: 0 0 8px;
 
-  font-size: 0.7rem;
+  color: #c87532;
 
+  font-size: 12px;
   font-weight: 800;
 
   letter-spacing: 2px;
-
-  margin-bottom: 8px;
 }
 
 
-/* =========================================
+/* ==============================
    TITLE
-========================================= */
+============================== */
 
 .drink-details-info h2 {
-  color: var(--deep-green);
+  margin: 0 0 15px;
 
-  font-size: 2.5rem;
+  color: #124d22;
 
-  margin-bottom: 15px;
+  font-size: 38px;
+  line-height: 1.15;
 }
 
 
-/* =========================================
+/* ==============================
    DESCRIPTION
-========================================= */
+============================== */
 
 .drink-details-description {
-  color: var(--ginger-brown);
+  margin: 0 0 25px;
+
+  color: #7a4525;
+
+  font-size: 15px;
 
   line-height: 1.7;
-
-  margin-bottom: 25px;
 }
 
 
-/* =========================================
-   SECTION HEADINGS
-========================================= */
+/* ==============================
+   INGREDIENTS
+============================== */
+
+.ingredients {
+  margin-bottom: 25px;
+}
 
 .ingredients h3,
 .size-selection h3,
 .quantity-selection h3 {
-  color: var(--deep-green);
+  margin: 0 0 12px;
 
-  font-size: 1rem;
+  color: #124d22;
 
-  margin-bottom: 12px;
+  font-size: 16px;
 }
 
-
-/* =========================================
-   INGREDIENTS
-========================================= */
-
 .ingredients ul {
-  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 
+  gap: 10px;
+
+  margin: 0;
   padding: 0;
 
-  margin: 0 0 25px;
+  list-style: none;
 }
 
 .ingredients li {
   display: flex;
-
   align-items: center;
-
-  gap: 9px;
-
-  color: var(--ginger-brown);
-
-  margin-bottom: 8px;
-}
-
-.ingredients li i {
-  color: var(--ginger);
-
-  font-size: 0.75rem;
-}
-
-
-/* =========================================
-   SIZE SELECTION
-========================================= */
-
-.size-options {
-  display: flex;
-
-  flex-wrap: wrap;
 
   gap: 8px;
 
+  color: #7a4525;
+
+  font-size: 13px;
+}
+
+.ingredients li i {
+  color: #c87532;
+}
+
+
+/* ==============================
+   SIZE
+============================== */
+
+.size-selection {
   margin-bottom: 25px;
 }
 
-.size-btn {
+.size-options {
   display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 4px;
-
-  min-width: 82px;
-
-  padding: 10px 15px;
-
-  border: 1px solid
-    rgba(122, 69, 37, 0.2);
-
-  border-radius: 8px;
-
-  background: white;
-
-  color: var(--ginger-brown);
-
-  cursor: pointer;
-
-  transition: 0.3s;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.size-btn:hover {
-  border-color: var(--ginger);
+.size-btn {
+  min-width: 70px;
+
+  padding: 10px 14px;
+
+  border: 1px solid #124d22;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #124d22;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
 }
 
 .size-btn.active {
-  background: var(--ginger);
+  background: #124d22 !important;
 
-  border-color: var(--ginger);
-
-  color: white;
-}
-
-.size-btn small {
-  font-size: 0.7rem;
-
-  font-weight: 700;
+  color: #ffffff !important;
 }
 
 
-/* =========================================
+/* ==============================
    QUANTITY
-========================================= */
+============================== */
 
 .quantity-selection {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  margin-bottom: 15px;
-}
-
-.quantity-selection h3 {
-  margin: 0;
+  margin-bottom: 25px;
 }
 
 .quantity-control {
-  display: flex;
+  width: fit-content;
 
+  display: flex;
   align-items: center;
 
-  width: 125px;
-
-  height: 42px;
+  border: 1px solid #124d22;
 
   border-radius: 9px;
 
-  background: white;
-
   overflow: hidden;
 
-  border: 1px solid
-    rgba(122, 69, 37, 0.1);
+  background: #ffffff;
 }
 
 .quantity-control button {
-  width: 40px;
+  width: 42px;
+  height: 42px;
 
-  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   border: none;
 
-  background: var(--deep-green);
+  background: #ffffff;
 
-  color: white;
+  color: #124d22;
 
   cursor: pointer;
-
-  transition: 0.3s;
 }
 
 .quantity-control button:hover {
-  background: var(--ginger);
+  background: #124d22;
+
+  color: #ffffff;
 }
 
 .quantity-control span {
-  flex: 1;
+  min-width: 42px;
 
   text-align: center;
 
-  color: var(--deep-green);
+  color: #124d22;
 
   font-weight: 800;
 }
 
 
-/* =========================================
-   TOTAL
-========================================= */
+/* ==============================
+   PRICE NOTICE
+============================== */
 
-.drink-total {
+.price-discussion {
   display: flex;
+  align-items: flex-start;
 
-  align-items: center;
+  gap: 12px;
 
-  justify-content: space-between;
+  margin-bottom: 20px;
 
-  margin-bottom: 15px;
+  padding: 14px;
 
-  padding: 14px 0;
+  border-radius: 12px;
 
-  border-top:
-    1px solid
-    rgba(122, 69, 37, 0.12);
+  background: rgba(200, 117, 50, 0.1);
 }
 
-.drink-total span {
-  color: var(--ginger-brown);
+.price-discussion > i {
+  color: #c87532;
 
-  font-weight: 600;
+  font-size: 21px;
 }
 
-.drink-total strong {
-  color: var(--deep-green);
+.price-discussion strong {
+  display: block;
 
-  font-size: 1.4rem;
+  margin-bottom: 4px;
+
+  color: #124d22;
+
+  font-size: 13px;
+}
+
+.price-discussion p {
+  margin: 0;
+
+  color: #7a4525;
+
+  font-size: 11px;
+
+  line-height: 1.5;
 }
 
 
-/* =========================================
-   ADD TO ORDER BUTTON
-========================================= */
+/* ==============================
+   ADD TO ORDER
+============================== */
 
 .add-order-btn {
-  width: 100%;
+  display: flex !important;
 
-  min-height: 52px;
+  width: 100% !important;
 
-  padding: 15px;
+  min-height: 58px !important;
 
-  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
 
-  align-items: center;
+  gap: 10px;
 
-  justify-content: center;
+  margin: 10px 0 0 !important;
+  padding: 15px 20px !important;
 
-  gap: 8px;
+  border: none !important;
+  border-radius: 12px !important;
 
-  border: none;
+  background: #124d22 !important;
 
-  border-radius: 11px;
+  color: #ffffff !important;
 
-  background: var(--deep-green);
+  font-size: 16px !important;
+  font-weight: 800 !important;
 
-  color: white;
+  opacity: 1 !important;
+  visibility: visible !important;
 
-  font-weight: 700;
+  cursor: pointer !important;
 
-  font-size: 1rem;
+  position: relative !important;
+  z-index: 100 !important;
 
-  cursor: pointer;
-
-  transition: 0.3s;
+  box-sizing: border-box;
 }
 
 .add-order-btn:hover {
-  background: var(--ginger);
+  background: #c87532 !important;
 
-  transform: translateY(-2px);
+  color: #ffffff !important;
 }
 
 .add-order-btn i {
-  margin-right: 0;
+  display: inline-block !important;
+
+  color: #ffffff !important;
+
+  font-size: 17px;
 }
 
 
-/* =========================================
+/* ==============================
    TABLET
-========================================= */
+============================== */
 
-@media (max-width: 750px) {
-
+@media (max-width: 800px) {
   .drink-modal {
     align-items: flex-start;
 
-    padding: 10px;
-
-    overflow-y: auto;
+    padding: 15px;
   }
 
   .drink-modal-content {
     grid-template-columns: 1fr;
 
-    max-height: 95vh;
+    max-width: 600px;
 
-    margin: 10px 0;
-
-    border-radius: 20px;
+    margin: 15px auto;
   }
 
   .drink-details-image {
-    min-height: 250px;
-
-    height: 250px;
+    height: 300px;
+    min-height: 300px;
   }
 
   .drink-details-info {
-    padding: 30px 22px 35px;
-
     max-height: none;
 
-    overflow-y: visible;
-  }
-
-  .drink-details-info h2 {
-    font-size: 2rem;
-  }
-
-  .add-order-btn {
-    margin-top: 5px;
-
-    position: relative;
-
-    z-index: 5;
+    padding: 30px;
   }
 }
 
 
-/* =========================================
-   SMALL MOBILE
-========================================= */
+/* ==============================
+   MOBILE
+============================== */
 
-@media (max-width: 480px) {
-
+@media (max-width: 550px) {
   .drink-modal {
     padding: 8px;
   }
@@ -489,98 +455,73 @@
   .drink-modal-content {
     width: 100%;
 
-    max-height: 96vh;
+    margin: 8px auto;
 
     border-radius: 18px;
   }
 
   .drink-details-image {
-    height: 210px;
-
-    min-height: 210px;
+    height: 220px;
+    min-height: 220px;
   }
 
   .drink-details-info {
-    padding: 25px 18px 30px;
+    padding: 25px 18px 22px;
+
+    overflow: visible;
   }
 
   .drink-details-info h2 {
-    font-size: 1.8rem;
+    font-size: 30px;
   }
 
   .drink-details-description {
-    font-size: 0.9rem;
+    font-size: 14px;
   }
 
-  .size-options {
-    gap: 6px;
+  .ingredients ul {
+    grid-template-columns: 1fr;
   }
 
-  .size-btn {
-    min-width: 75px;
-
-    padding: 9px 10px;
+  .ingredients li {
+    font-size: 12px;
   }
 
-  .quantity-control {
-    width: 115px;
-  }
-
-  .quantity-control button {
-    width: 36px;
-  }
-
-  .drink-total strong {
-    font-size: 1.25rem;
+  .price-discussion {
+    margin-bottom: 18px;
   }
 
   .add-order-btn {
-    min-height: 50px;
+    min-height: 56px !important;
 
-    padding: 14px;
+    display: flex !important;
+
+    font-size: 15px !important;
   }
 }
 
-.price-discussion {
-  display: flex;
 
-  align-items: center;
+/* ==============================
+   SMALL PHONES
+============================== */
 
-  gap: 12px;
+@media (max-width: 380px) {
+  .drink-details-image {
+    height: 190px;
+    min-height: 190px;
+  }
 
-  margin-bottom: 15px;
+  .drink-details-info {
+    padding: 22px 15px 20px;
+  }
 
-  padding: 13px;
+  .drink-details-info h2 {
+    font-size: 27px;
+  }
 
-  border-radius: 10px;
+  .add-order-btn {
+    min-height: 54px !important;
 
-  background: rgba(200, 117, 50, 0.08);
-}
-
-.price-discussion > i {
-  flex-shrink: 0;
-
-  font-size: 1.3rem;
-
-  color: var(--ginger);
-}
-
-.price-discussion strong {
-  display: block;
-
-  color: var(--deep-green);
-
-  font-size: 0.85rem;
-
-  margin-bottom: 3px;
-}
-
-.price-discussion p {
-  color: var(--ginger-brown);
-
-  font-size: 0.7rem;
-
-  line-height: 1.4;
-
-  margin: 0;
+    font-size: 14px !important;
+  }
 }
